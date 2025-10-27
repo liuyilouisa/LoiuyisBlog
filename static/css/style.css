@@ -1,12 +1,18 @@
 @import "theme.css";
 
-a {
-    color: var(--text);
-    text-decoration: none;
+.nav-btn {
+    display: block;
+    margin: 1rem auto;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 8rem;
 }
 
 body {
-    font-family: "LXGW WenKai";
+    font-family: "LXGW WenKai", "Source Han Sans SC", "Noto Sans CJK SC",
+        "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
     margin: 0;
     background-color: var(--bg);
     color: var(--text);
@@ -15,11 +21,4 @@ body {
 footer {
     text-align: center;
     margin-top: auto;
-}
-
-.block {
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-    width: 8rem;
 }
