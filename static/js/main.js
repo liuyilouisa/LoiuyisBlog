@@ -1,8 +1,4 @@
 const contentMap = {
-    home: {
-        title: "首页",
-        file: `home.html`,
-    },
     articles: {
         title: "文章",
         file: `articles.html`,
@@ -27,9 +23,7 @@ async function loadPage(page) {
     document.getElementById("content").innerHTML = html;
 }
 
-loadPage("home");
-
-document.getElementById('content').addEventListener('click', e => {
+document.getElementById('header').addEventListener('click', e => {
   if (e.target.classList.contains('nav-btn')) {
     loadPage(e.target.dataset.page);
   }
