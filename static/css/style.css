@@ -12,11 +12,13 @@
 
 .nav-btn:hover {
     text-decoration: underline;
+    transition: all 0.2s;
 }
 
 .nav-btn:active {
     background-color: var(--text);
     color: var(--bg);
+    transition: all 0.2s;
 }
 
 body {
