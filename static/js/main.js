@@ -12,19 +12,41 @@ const contentMap = {
 async function loadPage(page) {
     console.log("Loading page:", page);
     const { title, file } = contentMap[page];
-    document.title = 'Loiuyis~'+title;
+    document.title = "Loiuyis~" + title;
 
     const res = await fetch(`/pages/${file}`).catch((err) => {
         console.error("Failed to fetch page:", err);
     });
-    const html = await res.text().catch((err) => {  
+    const html = await res.text().catch((err) => {
         console.error("Failed to load page:", err);
     });
     document.getElementById("content").innerHTML = html;
+    if (page === "articles") await loadList();
 }
 
-document.getElementById('header').addEventListener('click', e => {
-  if (e.target.classList.contains('nav-btn')) {
-    loadPage(e.target.dataset.page);
-  }
+async function loadList() {
+    const hook = document.getElementById("article-list");
+    if (!hook) return;
+
+    const frag = document.createDocumentFragment();
+
+    const res = await fetch("/index.json");
+    const list = await res.json();
+
+    for (const meta of list) {
+        const card = document.createElement("div");
+        card.className = "article-card";
+        card.dataset.page = meta.slug;
+        card.textContent = meta.title;
+        frag.appendChild(card);
+    }
+
+    hook.innerHTML = "";
+    hook.appendChild(frag);
+}
+
+document.getElementById("header").addEventListener("click", (e) => {
+    if (e.target.classList.contains("nav-btn")) {
+        loadPage(e.target.dataset.page);
+    }
 });
