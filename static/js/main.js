@@ -45,8 +45,25 @@ async function loadList() {
     hook.appendChild(frag);
 }
 
+async function loadArticle(slug) {
+    console.log("Loading article:", slug);
+    const res = await fetch(`/pages/${slug}.html`).catch((err) => {
+        console.error("Failed to fetch article:", err);
+    });
+    const html = await res.text().catch((err) => {
+        console.error("Failed to load article:", err);
+    });
+    document.getElementById("content").innerHTML = html;
+}
+
 document.getElementById("header").addEventListener("click", (e) => {
     if (e.target.classList.contains("nav-btn")) {
         loadPage(e.target.dataset.page);
+    }
+});
+
+document.getElementById("content").addEventListener("click", (e) => {
+    if (e.target.classList.contains("article-card")) {
+        loadArticle(e.target.dataset.page);
     }
 });
