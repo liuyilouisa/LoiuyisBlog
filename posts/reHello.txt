@@ -1,7 +1,0 @@
----
-title:  Hello
-date:   2025-10-31
-author: Loiuyis
----
-你好，世界！
-Hello, world!
