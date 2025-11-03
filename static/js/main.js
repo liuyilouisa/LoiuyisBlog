@@ -14,7 +14,7 @@ async function loadPage(page) {
     const { title, file } = contentMap[page];
     document.title = "Loiuyis~" + title;
 
-    const res = await fetch(`pages/${file}`).catch((err) => {
+    const res = await fetch(`Blog/pages/${file}`).catch((err) => {
         console.error("Failed to fetch page:", err);
     });
     const html = await res.text().catch((err) => {
@@ -30,7 +30,7 @@ async function loadList() {
 
     const frag = document.createDocumentFragment();
 
-    const res = await fetch("index.json");
+    const res = await fetch("Blog/index.json");
     const list = await res.json();
 
     for (const meta of list) {
@@ -47,7 +47,7 @@ async function loadList() {
 
 async function loadArticle(slug) {
     console.log("Loading article:", slug);
-    const res = await fetch(`pages/${slug}.html`).catch((err) => {
+    const res = await fetch(`Blog/pages/${slug}.html`).catch((err) => {
         console.error("Failed to fetch article:", err);
     });
     const html = await res.text().catch((err) => {
